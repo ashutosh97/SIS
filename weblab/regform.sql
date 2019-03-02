@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS `regform` (
+ `username` varchar(50) NOT NULL,
+ `email` varchar(50) NOT NULL,
+ `password` varchar(50) NOT NULL,
+ `confpassword` varchar(50) NOT NULL,
+ `degree` varchar(50) NOT NULL,
+ `dept` varchar(50) NOT NULL,
+ `rollno` int(11) NOT NULL,
+ `regno` int(11) NOT NULL,
+ `sem` int(6) NOT NULL,
+ `cgpa` float(8,2) NOT NULL,
+ `yearofpass` int(11) NOT NULL,
+ `fname` varchar(50) NOT NULL,
+ `lname` varchar(50) NOT NULL,
+ `contact` int(20) NOT NULL,
+ `gender` varchar(25) NOT NULL,
+ `dob` date NOT NULL,
+ `age` int(11) NOT NULL,
+ `address` varchar(255) NOT NULL,
+ PRIMARY KEY (`regno`)
+ );

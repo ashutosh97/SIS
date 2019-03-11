@@ -1,3 +1,4 @@
+<?php include('db.php') ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
     <style>
@@ -75,15 +76,15 @@
 				</li>   
                                 <li><a href="student_login.php">User Login</a></li>
                                 <li><a href="admin_login.php"><span>Admin Login</span></a></li>
-                                
+                                 
 				<li><a class="codrops-icon codrops-icon-prev" href="index.php"><span>Back to Home Page</span></a></li>
 			</ul>
 			<header>
 				<h1>Admin Login</h1>	
                                 <form method="post" action="">
-                                        <p><input type="text" name="login" value="" placeholder="Email"></p>
-                                        <p><input type="password" name="password" value="" placeholder="Password"></p>
-                                        <p><input type="submit" name="commit" value="Login"></p>
+                                        <p><input type="text" name="username" placeholder="Username"></p>
+                                        <p><input type="password" name="password" placeholder="Password"></p>
+                                        <p><input type="submit" name="login_user" value="Login"></p>
                                 </form>
 			</header>
                     

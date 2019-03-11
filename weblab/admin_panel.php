@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 	<head>
@@ -38,13 +39,13 @@
 						</div><!-- /gn-scroller -->
 					</nav>
 				</li>   
-                                <li><a href="student_login.php">User Login</a></li>
-				<li><a href="admin_login.php"><span>Admin Login</span></a></li>
-                                <li><a href="register.php"><span>Register</span></a></li>
-				<li><a class="codrops-icon codrops-icon-prev" href="index.php"><span>Back to Home Page</span></a></li>
+                                <li><a href="#">1</a></li>
+				<li><a href="#"><span>2</span></a></li>
+                                <li><a href="#"><span>3</span></a></li>
+				<li><a class="codrops-icon codrops-icon-prev" href="index.php"><span>Logout</span></a></li>
 			</ul>
 			<header>
-				<h1>Student Information System<span>Information of all students at one place!</span></h1>	
+				<h1>Admin Panel<span>Welcome admin!!</span></h1>	
 			</header> 
 		</div><!-- /container -->
 		<script src="js/classie.js"></script>

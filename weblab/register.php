@@ -1,6 +1,3 @@
-<?php
-    include('db.php');
-    ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
     <style>
@@ -18,6 +15,29 @@
     button[type=button]:hover {
       background-color: #45a049;
     }
+	
+	.um,.um ul{
+  list-style-type: none;
+  width:350px;
+  /*background:#f2f2bf;
+  border: 1px solid black;*/
+	}
+	.lm,.lm li {
+  display: inline-block;
+  height: 50px;
+  list-style-type: none;
+  text-align: left;
+  width: 100px;
+}
+	#progressbar{
+	margin:0;
+	padding:0;
+	font-size:18px;
+	/*margin-left:50px;*/
+	}
+	#active1{
+	color:red
+	}
     </style>
 	<head>
 		<meta charset="UTF-8" />
@@ -47,7 +67,7 @@
 									<a class="gn-icon gn-icon-search"><span>Search</span></a>
 								</li>
 								<li><a href="contact_us.php" class="gn-icon gn-icon-cog">Contact Us</a></li>
-								<li><a class="gn-icon gn-icon-help">Help</a></li>
+								<li><a href="help.php" class="gn-icon gn-icon-help">Help</a></li>
 								<li>
 									<a class="gn-icon gn-icon-archive">Archives</a>
 									<ul class="gn-submenu">
@@ -67,14 +87,21 @@
 			</ul>
 			<header>
 				<h1>Registration Form<span></span></h1>	
-                                <form id="regForm" action="register.php" method="post">
+                                <form id="regForm" name="regForm" action="reg.php" method="post" enctype="multipart/form-data">
+								<br>
+										<!-- Progressbar -->
+										<ul id="progressbar" class="um">
+										<li id="active1" class="lm">Create Account	</li>
+										<li id="active2" class="lm">Academic Profiles</li>
+										<li id="active3" class="lm">Personal Details</li>
+										</ul>
                                         <div class="tab" id="first">
                                             
                                         <p><input type="text" name="uname" value="" placeholder="User name"></p>
-                                        <p><input type="text" name="email" onblur="validateEmail(email);" placeholder="E-mail ID"></p>
-                                        <p><input type="password" id="pass" name="password" value="" placeholder="Password"></p>
-                                        <p><input type="password" id="confpass" name="confpassword" value="" placeholder="Confirm Password"></p>
-                                        <button type="button" id="nextBtn" name="next_one" onclick="return validateForm();">Next</button>
+                                        <p><input type="text" name="email" onBlur="validateEmail(email);" placeholder="E-mail ID"></p>
+                                        <p><input type="password" id="pass" name="pass" value="" placeholder="Password"></p>
+                                        <p><input type="password" id="confpass" name="confpass" value="" placeholder="Confirm Password"></p>
+                                        <button type="button" id="nextBtn" name="next_one" onClick="return validateForm();">Next</button>
                                         </div>
 
                                         <div class="tab" id="second">
@@ -94,13 +121,15 @@
                                             <option value="Chemical">Chemical</option>
                                         </select>
                                        
-                                        <p><input type="text" id="roll" name="rollnum" value="" placeholder="Roll Number" onFocus="return dept_blank();"></p>
-                                        <p><input type="text" id="reg" name="regnum" value="" placeholder="Registration Number" onFocus="return roll_blank();"></p>
+                                        <p><input type="text" id="roll" name="roll" value="" placeholder="Roll Number" onFocus="return dept_blank();"></p>
+                                        <p><input type="text" id="reg" name="reg" value="" placeholder="Registration Number" onFocus="return roll_blank();"></p>
                                         <p><input type="text" id="sem" name="sem" value="" placeholder="Current Semester" onFocus="return reg_blank();"></p>
-                                        <p><input type="text" id="cg" name="cgpa" value="" placeholder="CGPA" onFocus="return sem_blank();"></p>
+                                        <p><input type="text" id="cg" name="cg" value="" placeholder="CGPA" onFocus="return sem_blank();"></p>
                                         <p><input type="text" id="yop" name="yop" value="" placeholder="Year of Passing" onFocus="return cg_blank();"></p>
-                                        <button id="pre_btn1" name="prev_one" onclick="prev_step1()" type="button">Previous</button>
-                                        <button id="next_btn2" name="next_two" onclick="return pyear_blank();" type="button">Next</button>
+										<font face="Cambria" size="+1">Resume:</font>
+									    <input type="file" name="resupload" value="resupload" id="resupload" onFocus="return pyear_blank();" accept=".pdf">
+                                        <p><button id="pre_btn1" name="prev_one" onClick="prev_step1()" type="button">Previous</button>
+                                        <button id="next_btn2" name="next_two" onClick="return res_blank();" type="button">Next</button></p>
                                         </div>
 
                                     <div class="tab" id="third">
@@ -113,8 +142,11 @@
                                         <p><input type="date" id="date" name="date" value="" placeholder="Date of Birth" onFocus="return gen_blank();"></p>
                                         <p><input type="text" id="age" name="age" value="" placeholder="Age" onFocus="return get_age();"></p>
                                         <p><input type="text" id="addr" name="addr" value="" placeholder="Permanent Address" onFocus="return dob_blank();"></p>
-                                        <button id="pre_btn2" name="prev_two" onclick="prev_step2()" type="button">Previous</button>
-                                        <button id="submit_btn" name="reg_user" onFocus="return add_blank();" type="button">Submit</button>
+										<font face="Cambria" size="+1">Image:</font>
+									    <input type="file" name="fileupload" value="fileupload" id="fileupload" onFocus="return add_blank();" accept=".png, .jpg, .jpeg">
+                                        <p><button id="pre_btn2" name="prev_two" onClick="prev_step2()" type="button">Previous</button>
+                                        <p><input type="submit" name="commit" value="submit"></p>
+                                </form>
                                     </div>
                                         
                                 </form>
@@ -146,6 +178,7 @@
                   return true;
 
                 }
+				
                 function dept_blank()
                 {
                   var data=document.getElementById("dept");
@@ -182,7 +215,7 @@
                   }
                   else
                   {
-                    if(data.length!=8)
+                    if(data.length!=8 || data=="00000000")
                     {
                       alert("Invalid roll number Entered!!");
                       document.getElementById("roll").value="";
@@ -205,7 +238,7 @@
                   }
                   else
                   {
-                    if(data.length!=8)
+                    if(data.length!=8 || data=="00000000")
                     {
                       alert("Invalid Registration number Entered!!");
                       document.getElementById("reg").value="";
@@ -237,7 +270,7 @@
                   }
                   else
                   {
-                    if(data.length!=1 && data!="1" && data!="2" && data!="3" && data!="4" && data!="5" && data!="6" && data!="7" && data!="8")
+                    if(data.length!=1 || data!="1" && data!="2" && data!="3" && data!="4" && data!="5" && data!="6" && data!="7" && data!="8")
                     {
                       alert("Invalid Semester Entered!!");
                       document.getElementById("sem").value="";
@@ -294,9 +327,21 @@
                 }
 
               }
-              next_step2();
               return true;
             }
+			function res_blank()
+{
+	var data=document.getElementById("resupload").value;
+
+                if(data=="")
+	{
+		alert("Resume not entered!!");
+		document.getElementById("resupload").focus();
+                                   return false;
+	}
+	next_step2();
+return true;
+}
             function fn_blank()
             {
               var data=document.getElementById("fname").value;
@@ -366,7 +411,7 @@
           }
           else
           {
-            if(data.length!=10)
+            if(data.length!=10 || data=="0000000000")
             {
               alert("Invalid phone number Entered!!");
               document.getElementById("contact").value="";
@@ -420,11 +465,23 @@
         document.getElementById("addr").focus();
         return false;
       }
-      document.getElementById("submit_btn").onclick = function () {
-        location.href = "register.php";
-      };
       return true;
     }
+	function img_blank()
+{
+	var data=document.getElementById("fileupload").value;
+
+                if(data=="")
+	{
+		alert("Image not entered!!");
+		document.getElementById("fileupload").focus();
+                                   return false;
+	}
+	document.getElementById("submit_btn").onclick = function () {
+        location.href = "register.php";
+      };
+return true;
+}
 
                 function showTab(n) {
                   // This function will display the specified tab of the form...
@@ -492,22 +549,32 @@
 
                   //return valid; // return the valid status
                 }
-                function next_step1() {
-                  document.getElementById("first").style.display = "none";
-                  document.getElementById("second").style.display = "block";
-                }
-                function prev_step1() {
-                  document.getElementById("first").style.display = "block";
-                  document.getElementById("second").style.display = "none";
-                }
-                function next_step2() {
-                  document.getElementById("second").style.display = "none";
-                  document.getElementById("third").style.display = "block";
-                }
-                function prev_step2() {
-                  document.getElementById("third").style.display = "none";
-                  document.getElementById("second").style.display = "block";
-                }
+                // Function that executes on click of first next button.
+function next_step1() {
+document.getElementById("first").style.display = "none";
+document.getElementById("second").style.display = "block";
+document.getElementById("active2").style.color = "red";
+}
+// Function that executes on click of first previous button.
+function prev_step1() {
+document.getElementById("first").style.display = "block";
+document.getElementById("second").style.display = "none";
+document.getElementById("active1").style.color = "red";
+document.getElementById("active2").style.color = "gray";
+}
+// Function that executes on click of second next button.
+function next_step2() {
+document.getElementById("second").style.display = "none";
+document.getElementById("third").style.display = "block";
+document.getElementById("active3").style.color = "red";
+}
+// Function that executes on click of second previous button.
+function prev_step2() {
+document.getElementById("third").style.display = "none";
+document.getElementById("second").style.display = "block";
+document.getElementById("active2").style.color = "red";
+document.getElementById("active3").style.color = "gray";
+}
 
 </script>
 

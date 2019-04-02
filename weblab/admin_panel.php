@@ -15,6 +15,15 @@ if (isset($_GET['logout'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
+<style>
+.registered
+{
+	width:300px;
+	height:500px;
+	border:#FFFFFF;
+	float:left
+}
+</style>
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -53,9 +62,10 @@ if (isset($_GET['logout'])) {
 					</div><!-- /gn-scroller -->
 				</nav>
 			</li>   
-			<li><a href="#">1</a></li>
-			<li><a href="#"><span>2</span></a></li>
-			<li><a href="#"><span>3</span></a></li>
+			<li><a href="registered.php">Registered</a></li>
+			<li><a href="activated.php"><span>Activated</span></a></li>
+			<li><a href="rejected.php"><span>Rejected</span></a></li>
+			<li><a href="view.php"><span>View</span></a></li>
 			<li><a class="codrops-icon codrops-icon-prev" href="admin_panel.php?logout='1'"><span>logout</span></a></li>
 		</ul>
 		<header>
